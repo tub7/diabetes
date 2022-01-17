@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.hello {
+    color: red;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    background-color: rgb(179, 205, 216);
+}
+
+.aps {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(116, 124, 173);
+    border-radius: 2rem;
+    display: grid;
+    grid-template-rows: 1fr 7fr 1fr;
+}
+
+h1 {
+    text-align: center;
+    color: white !important;
+    padding-top: 1rem;
+}
+
+.listitem {
+    list-style: none;
+    background-color: white;
+    margin-inline: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: large;
+    display: grid;
+    grid-template-columns: 14fr 1fr 1fr;
+    gap: 0.5rem;
+    font-weight: 500;
+    padding-inline: 0.25rem;
+    margin-block: 0.5rem;
+}
+
+ul {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-height: 500px;
+}
+
+ul::-webkit-scrollbar {
+    display: none;
+}
+
+.listitem > .del {
+    border: none;
+    background: url(./trash.png) no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+}
+.listitem > .check {
+    align-self: center;
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.entry {
+    padding-block-start: 0.5rem;
+    display: grid;
+    grid-template-columns: 4fr 0.5fr 0.5fr 1fr;
+}
+
+.entry > input {
+    min-width: 55%;
+    height: 50%;
+    margin-inline: 0.25rem;
+    margin-inline-start: 0.9rem;
+}
+.entry > button {
+    width: 90%;
+    height: 50%;
+    margin-inline: 0.125rem;
+    cursor: pointer;
+}
+.entry > select {
+    width: 80%;
+    height: 50%;
+    margin-inline: 0.2rem;
+    cursor: pointer;
+    font-size: 12px;
+}
+#root {
+    width: 55%;
+    height: 90%;
+}
+
+@media only screen and (max-width: 500px) {
+    #root {
+        width: 100%;
+    }
+    .entry {
+        grid-template-columns: 2fr 0.5fr 0.5fr 1fr;
+    }
+}
+@media only screen and (max-width: 700px) and (min-width: 500px) {
+    #root {
+        width: 75%;
+    }
+    .entry {
+        grid-template-columns: 3fr 0.5fr 0.5fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 700px) {
+    #root {
+        width: 70%;
+    }
+}
