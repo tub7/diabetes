@@ -26,20 +26,6 @@ function Todoapp() {
         setstatus(e.target.value);
     }
 
-    function handlefilter() {
-        switch (status) {
-            case "complete":
-                setfiltered(todos.filter((item) => item.complete === true));
-                break;
-            case "uncomplete":
-                setfiltered(todos.filter((item) => item.complete === false));
-                break;
-            default:
-                setfiltered(todos);
-                break;
-        }
-    }
-
     function handleclear() {
         settodos([]);
     }
@@ -49,13 +35,28 @@ function Todoapp() {
     }, []);
 
     useEffect(() => {
+        const setlocal = () => {
+            localStorage.setItem("todos", JSON.stringify(todos));
+        };
         handlefilter();
         setlocal();
+        function handlefilter() {
+            switch (status) {
+                case "complete":
+                    setfiltered(todos.filter((item) => item.complete === true));
+                    break;
+                case "uncomplete":
+                    setfiltered(
+                        todos.filter((item) => item.complete === false)
+                    );
+                    break;
+                default:
+                    setfiltered(todos);
+                    break;
+            }
+        }
     }, [status, todos]);
 
-    const setlocal = () => {
-        localStorage.setItem("todos", JSON.stringify(todos));
-    };
     const getlocal = () => {
         if (localStorage.getItem("todos") === null) {
             localStorage.setItem("todos", JSON.stringify([]));
